@@ -697,27 +697,21 @@ public abstract class SerialDate implements Comparable,
      * @return the date that falls on the specified day-of-the-week and is
      * CLOSEST to the base date.
      */
-    public static SerialDate getNearestDayOfWeek(final int targetDOW,
-                                                 final SerialDate base) {
+    public static SerialDate getNearestDayOfWeek(final int targetDOW, final SerialDate base) {
 
-// check arguments...
         if (!SerialDate.isValidWeekdayCode(targetDOW)) {
-            throw new IllegalArgumentException(
-                    "Invalid day-of-the-week code."
-            );
+            throw new IllegalArgumentException("Invalid day-of-the-week code.");
         }
 
-// find the date...
-        final int baseDOW = base.getDayOfWeek();
-        int adjust = -Math.abs(targetDOW - baseDOW);
-        if (adjust >= 4) {
-            adjust = 7 - adjust;
+        int delta = targetDOW - base.getDayOfWeek();
+        int positiveDelta = delta + 7;
+        int adjust = positiveDelta % 7;
+
+        if(adjust > 3) {
+            adjust -= 7;
         }
-        if (adjust <= -4) {
-            adjust = 7 + adjust;
-        }
+
         return SerialDate.addDays(adjust, base);
-
     }
 
     /**
@@ -752,9 +746,8 @@ public abstract class SerialDate implements Comparable,
             case SerialDate.FOURTH_WEEK_IN_MONTH : return "Fourth";
             case SerialDate.LAST_WEEK_IN_MONTH : return "Last";
             default :
-                return "SerialDate.weekInMonthToString(): invalid code.";
+                throw new IllegalArgumentException("SerialDate.weekInMonthToString(): invalid code.");
         }
-
     }
 
     /**
