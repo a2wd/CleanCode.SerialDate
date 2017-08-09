@@ -36,7 +36,7 @@
 *
 * Changes
 * -------
-* 29-May-2002 : Version 1 (code moved from SerialDate class) (DG);
+* 29-May-2002 : Version 1 (code moved from DayDate class) (DG);
 *
 */
 
@@ -46,7 +46,7 @@ package Refactoring;
  * Useful constants for months. Note that these are NOT equivalent to the
  * constants defined by java.util.Calendar (where JANUARY=0 and DECEMBER=11).
  * <P>
- * Used by the SerialDate and RegularTimePeriod classes.
+ * Used by the DayDate and RegularTimePeriod classes.
  *
  * @author David Gilbert
  */

@@ -1,3 +1,3 @@
-# CleanCode.SerialDate
+# CleanCode.DayDate
 
-An exercise, refactoring the Java utility SerialDate
+An exercise, refactoring the Java utility DayDate
